@@ -209,3 +209,15 @@
  .kpi-value{font-size:1.125rem;}
  .customer-cards{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
+
+
+/* Dashboard information hierarchy: paired analysis panels, full-width detail tables */
+.overview-analysis-grid{row-gap:var(--cds-spacing-05);}
+.overview-analysis-grid>.cds--col{min-width:0;}
+.overview-analysis-grid .data-panel{height:100%;}
+.overview-analysis-grid .data-panel .panel-heading h2{min-width:0;}
+@media(max-width:671px){
+ .kpi-grid>.cds--col,.secondary-kpis>.cds--col{width:50%;max-width:50%;flex:0 0 50%;min-width:0;}
+ .overview-analysis-grid>.cds--col{width:100%;max-width:100%;flex:0 0 100%;}
+ .overview-analysis-grid .data-panel{height:auto;}
+}

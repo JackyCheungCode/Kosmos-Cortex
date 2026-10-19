@@ -19,6 +19,10 @@ The UI baseline uses exact direct dependency versions for Carbon core, IBM Produ
 
 See [the Carbon baseline](docs/design-system/carbon-baseline.md) and [the exception register](docs/design-system/exceptions.json) for policy and review requirements.
 
+## Telemetry
+
+Carbon and IBM Products packages include documented telemetry opt-out environment variables. The repository CI sets `CARBON_TELEMETRY_DISABLED=1` and `IBM_TELEMETRY_DISABLED=true` before installing dependencies. For local installation, set both variables in your shell before running `npm install` if you want to opt out of install-time telemetry.
+
 ## Getting started
 
 1. Install dependencies:

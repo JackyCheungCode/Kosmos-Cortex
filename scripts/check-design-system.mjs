@@ -102,12 +102,32 @@ for (const sourceRoot of sourceRoots) {
           if (tag && prohibitedElements.has(tag.toLowerCase())) {
             report(file, "native-interactive-element", tag.toLowerCase());
           }
-          for (const attribute of node.attributes.properties) {
+          const jsxAttributes = node.attributes.properties.filter(
+            (attribute) => ts.isJsxAttribute(attribute) && ts.isIdentifier(attribute.name),
+          );
+          for (const attribute of jsxAttributes) {
             if (ts.isJsxAttribute(attribute) && ts.isIdentifier(attribute.name)) {
               if (attribute.name.text === "style") {
                 report(file, "inline-style", "style");
               }
             }
+          }
+          const isIntrinsic = tag !== null && /^[a-z]/.test(tag);
+          const hasInteraction = jsxAttributes.some((attribute) =>
+            ts.isJsxAttribute(attribute) &&
+            ts.isIdentifier(attribute.name) &&
+            ["onClick", "onKeyDown", "onKeyUp", "onPointerDown", "onPointerUp"].includes(attribute.name.text),
+          );
+          const hasButtonRole = jsxAttributes.some((attribute) =>
+            ts.isJsxAttribute(attribute) &&
+            ts.isIdentifier(attribute.name) &&
+            attribute.name.text === "role" &&
+            attribute.initializer !== undefined &&
+            ts.isStringLiteral(attribute.initializer) &&
+            attribute.initializer.text === "button",
+          );
+          if (isIntrinsic && (hasInteraction || hasButtonRole) && !prohibitedElements.has(tag.toLowerCase())) {
+            report(file, "custom-interactive-element", tag.toLowerCase());
           }
         }
         ts.forEachChild(node, visit);

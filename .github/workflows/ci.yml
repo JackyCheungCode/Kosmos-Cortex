@@ -26,8 +26,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
+      # A lockfile will be added after dependency versions are validated.
+      # Do not enable setup-node's npm cache until package-lock.json exists.
       - name: Install dependencies
         run: npm install
 

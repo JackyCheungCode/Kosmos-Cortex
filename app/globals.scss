@@ -91,6 +91,7 @@
 @media(max-width:671px){
  .app-side-nav.cds--side-nav{transform:translateX(-100%);width:16rem;max-width:85vw;}
  .app-side-nav.cds--side-nav.mobile-nav-open{transform:translateX(0);}
+ .app-shell.sidebar-collapsed .app-side-nav.cds--side-nav.mobile-nav-open{transform:translateX(0);}
  .app-shell.sidebar-expanded .app-side-nav.cds--side-nav{transform:translateX(-100%);}
  .app-shell.sidebar-expanded .app-side-nav.cds--side-nav.mobile-nav-open{transform:translateX(0);}
  .app-main-area,.app-shell.sidebar-collapsed .app-main-area,.app-shell.sidebar-expanded .app-main-area{margin-inline-start:0;}

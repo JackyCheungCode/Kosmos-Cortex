@@ -112,7 +112,6 @@ for (const sourceRoot of sourceRoots) {
               }
             }
           }
-          const isIntrinsic = tag !== null && /^[a-z]/.test(tag);
           const hasInteraction = jsxAttributes.some((attribute) =>
             ts.isJsxAttribute(attribute) &&
             ts.isIdentifier(attribute.name) &&

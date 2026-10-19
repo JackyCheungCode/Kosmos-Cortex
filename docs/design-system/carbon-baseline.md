@@ -16,9 +16,11 @@ These are exact direct-dependency versions. The project must re-check peer depen
 2. Application code imports components from `@/src/design-system`; direct imports from the two Carbon packages are restricted to that gateway.
 3. Prefer IBM Products patterns when the use case matches a stable, documented pattern. Preview, canary, and experimental components are not allowed by default.
 4. Do not create replacement implementations for standard interactive controls when an official component exists.
-5. Native interactive JSX elements (`a`, `button`, `input`, `select`, `textarea`, `option`, `dialog`, `details`, and `summary`) are prohibited unless a reviewed, unexpired exception is recorded.
-6. Inline JSX styles and hard-coded colors, font declarations, and spacing/typography values in app Sass/CSS are prohibited. Use Carbon components, classes, themes, and design tokens.
-7. Exceptions must be specific, justified, approved by a named reviewer, and carry an expiry date in `docs/design-system/exceptions.json`.
+5. Use Carbon React table primitives or `DataTable` for business data tables. KPI and analytical sections should use Carbon `Tile` surfaces rather than hand-built card controls.
+6. SVG is permitted for non-interactive chart/map rendering only; use Carbon controls (for example, `Button`) for accessible drill-down/filter actions. Do not attach click/keyboard handlers or button roles directly to SVG elements.
+7. Native interactive JSX elements (`a`, `button`, `input`, `select`, `textarea`, `option`, `dialog`, `details`, and `summary`) are prohibited unless a reviewed, unexpired exception is recorded.
+8. Inline JSX styles and hard-coded colors, font declarations, and spacing/typography values in app Sass/CSS are prohibited. Use Carbon components, classes, themes, and design tokens.
+9. Exceptions must be specific, justified, approved by a named reviewer, and carry an expiry date in `docs/design-system/exceptions.json`.
 
 ## Styling and theming
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import "@carbon/charts-react/dist/styles.css";
 
 export const metadata: Metadata = {
   title: "Kosmos Cortex",

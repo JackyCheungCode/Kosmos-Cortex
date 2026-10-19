@@ -6,6 +6,7 @@ export {
   Button,
   Column,
   Grid,
+  Link,
   Tag,
   Theme,
   Tile,

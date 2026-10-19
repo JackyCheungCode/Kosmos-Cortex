@@ -28,6 +28,12 @@ export {
   TabPanels,
   Tabs,
   Tag,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
   Theme,
   Tile,
 } from "@carbon/react";

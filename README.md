@@ -71,4 +71,4 @@ This repository contains the application scaffold, Carbon design-system integrat
 - Cloudflare Pages preview project: `kosmos-cortex-dashboard-preview`
 - Intended branch: `feat/business-data-hub-dashboard`
 - Build output: Next.js static export (`out/`); production-branch deployments are disabled for this preview project.
-- All dashboard controls must use the approved Carbon React gateway at `src/design-system`; the design-system check also rejects custom interactive SVG/HTML elements.
+- All dashboard controls must use the approved Carbon React gateway at `src/design-system`; the design-system check also rejects custom interactive SVG/HTML elements. The Pages preview is configured to build on matching feature-branch updates only.

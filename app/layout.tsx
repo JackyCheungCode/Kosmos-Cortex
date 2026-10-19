@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import "./dashboard-refresh.scss";
 import "@carbon/charts-react/dist/styles.css";
 
 export const metadata: Metadata = {

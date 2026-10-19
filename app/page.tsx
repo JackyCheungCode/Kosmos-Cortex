@@ -30,7 +30,7 @@ function WorldMap({onSelect,selected}:{onSelect:(v:string)=>void;selected?:strin
  const areas=[{region:"北美",x:22,y:34,revenue:2.94,customers:12},{region:"欧洲",x:51,y:28,revenue:3.33,customers:16},{region:"亚洲",x:74,y:35,revenue:3.15,customers:19},{region:"中东",x:58,y:43,revenue:1.19,customers:6}];
  return <div className="world-map">
   <div className="world-map-plot">
-   <img className="world-map-base" src="https://upload.wikimedia.org/wikipedia/commons/9/9f/BlankMap-World-Equirectangular.svg" alt="无文字世界地图底图" loading="lazy"/>
+   <img className="world-map-base" src="https://upload.wikimedia.org/wikipedia/commons/9/9f/BlankMap-World-Equirectangular.svg" alt="无文字世界地图底图" loading="lazy" decoding="async"/>
    <svg className="world-map-markers" viewBox="0 0 1000 507" preserveAspectRatio="none" role="group" aria-label="客户区域业务规模标记">
     {areas.map(a=><g key={a.region} role="button" tabIndex={0} aria-label={`${a.region}，${a.customers}家客户，营收 ${a.revenue.toFixed(2)} 百万美元`} className={`map-point ${selected===a.region?"is-selected":""}`} transform={`translate(${a.x*10} ${a.y*5.07})`} onClick={()=>onSelect(a.region)} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();onSelect(a.region)}}}>
      <circle r={Math.max(10,Math.sqrt(a.revenue)*7)} className="map-point-halo"/>

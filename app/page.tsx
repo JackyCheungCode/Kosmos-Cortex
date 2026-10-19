@@ -43,7 +43,7 @@ export default function HomePage(){
  const table=<CustomerTable rows={filtered} currency={applied.currency} onSelect={choose} />;
  const pipe=[{label:"线索",value:8.6,display:"US$ 8.6M"},{label:"询价",value:6.9,display:"US$ 6.9M"},{label:"报价",value:4.8,display:"US$ 4.8M"},{label:"谈判",value:2.7,display:"US$ 2.7M"},{label:"赢单",value:1.9,display:"US$ 1.9M"}];
  return <div className={`app-shell ${sidebarOpen?"sidebar-expanded":"sidebar-collapsed"}`}>
- <Theme theme="g90"><div className="app-chrome">
+ <Theme theme="g10"><div className="app-chrome">
  <Header aria-label="Kosmos Cortex" className="app-header">
  <HeaderMenuButton aria-label={sidebarOpen?"收起侧边栏":"展开侧边栏"} isActive={sidebarOpen} onClick={()=>{setSidebarOpen(v=>!v);setMobileNavOpen(v=>!v)}}/>
  <HeaderName prefix="Kosmos" href="/" className="app-header-name"><strong>Cortex</strong></HeaderName>

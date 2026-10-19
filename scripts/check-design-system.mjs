@@ -126,7 +126,7 @@ for (const sourceRoot of sourceRoots) {
             ts.isStringLiteral(attribute.initializer) &&
             attribute.initializer.text === "button",
           );
-          if (isIntrinsic && (hasInteraction || hasButtonRole) && !prohibitedElements.has(tag.toLowerCase())) {
+          if (tag !== null && /^[a-z]/.test(tag) && (hasInteraction || hasButtonRole) && !prohibitedElements.has(tag.toLowerCase())) {
             report(file, "custom-interactive-element", tag.toLowerCase());
           }
         }

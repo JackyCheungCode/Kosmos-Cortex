@@ -374,3 +374,146 @@
   .business-dashboard .kpi-card.cds--tile { padding: var(--cds-spacing-02); }
   .business-dashboard .kpi-value { font-size: var(--cds-heading-02-font-size); }
 }
+
+
+/* ============================================================
+   Reference-led redesign: Carbon / IBM Plex responsive layout
+   Keep this block last: it intentionally supersedes legacy grid overrides.
+   ============================================================ */
+.business-dashboard {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1584px;
+  margin-inline: auto;
+  padding: 32px clamp(16px, 2.5vw, 40px) 48px;
+  overflow-x: clip;
+  font-family: "IBM Plex Sans", "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: .16px;
+}
+.business-dashboard .kpi-grid,
+.business-dashboard .secondary-kpis,
+.business-dashboard .overview-analysis-grid,
+.business-dashboard .split-panels {
+  display: grid !important;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  align-items: stretch;
+  gap: 16px;
+}
+.business-dashboard .kpi-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+}
+.business-dashboard .secondary-kpis {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+.business-dashboard .overview-analysis-grid,
+.business-dashboard .split-panels {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+.business-dashboard .kpi-grid > .cds--col,
+.business-dashboard .secondary-kpis > .cds--col,
+.business-dashboard .overview-analysis-grid > .cds--col,
+.business-dashboard .split-panels > .cds--col {
+  grid-column: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: none !important;
+  padding: 0 !important;
+}
+.business-dashboard .kpi-card.cds--tile,
+.business-dashboard .data-panel.cds--tile,
+.business-dashboard .customer-card.cds--tile {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.business-dashboard .kpi-card.cds--tile {
+  min-height: 168px;
+  padding: 16px;
+  border-top: 2px solid #0f62fe;
+  gap: 8px;
+}
+.business-dashboard .kpi-card-heading { gap: 12px; align-items: center; }
+.business-dashboard .kpi-value { font-size: clamp(22px, 1.7vw, 30px); line-height: 1.25; }
+.business-dashboard .data-panel.cds--tile { height: 100%; padding: 20px; }
+.business-dashboard .panel-heading { margin-bottom: 16px; }
+.business-dashboard .overview-analysis-grid .data-panel,
+.business-dashboard .split-panels .data-panel { height: 100%; }
+.business-dashboard .customer-card.cds--tile { padding: 16px; }
+.business-dashboard .global-filters {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+}
+.business-dashboard .filter-fields {
+  grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(130px, 1fr));
+  gap: 12px;
+}
+.business-dashboard .section-intro { margin-bottom: 4px; }
+.business-dashboard .funnel { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.business-dashboard .funnel-arrow { display: none; }
+.business-dashboard .region-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.business-dashboard .customer-table-wrap { max-width: 100%; overflow-x: auto; }
+.business-dashboard .chart-drill-controls { flex-wrap: wrap; }
+@media (max-width: 1311px) {
+  .business-dashboard .kpi-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .business-dashboard .filter-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .business-dashboard .funnel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .business-dashboard .region-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1055px) {
+  .business-dashboard { padding: 24px 20px 40px; }
+  .business-dashboard .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .business-dashboard .overview-analysis-grid,
+  .business-dashboard .split-panels { grid-template-columns: minmax(0, 1fr) !important; }
+  .business-dashboard .filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-dashboard .filter-date { grid-column: 1 / -1; }
+  .business-dashboard .region-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-dashboard .funnel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-dashboard .data-panel.cds--tile { height: auto; }
+}
+@media (max-width: 671px) {
+  .business-dashboard { padding: 20px 16px 32px; }
+  .business-dashboard .kpi-grid,
+  .business-dashboard .secondary-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px; }
+  .business-dashboard .kpi-card.cds--tile { min-height: 148px; padding: 12px; }
+  .business-dashboard .kpi-value { font-size: clamp(20px, 5.8vw, 26px); overflow-wrap: anywhere; }
+  .business-dashboard .data-panel.cds--tile { padding: 16px; }
+  .business-dashboard .dashboard-header { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .business-dashboard .header-meta { flex-wrap: wrap; white-space: normal; }
+  .business-dashboard .section-intro { align-items: flex-start; flex-wrap: wrap; }
+  .business-dashboard .filter-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-dashboard .filter-actions .cds--btn { width: 100%; max-width: none; }
+  .business-dashboard .customer-table-wrap { display: none; }
+  .business-dashboard .customer-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .business-dashboard .customer-card.cds--tile { padding: 12px; }
+  .business-dashboard .region-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-dashboard .funnel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .business-dashboard .chart-drill-controls .cds--btn { min-height: 36px; }
+}
+@media (max-width: 399px) {
+  .business-dashboard { padding-inline: 12px; }
+  .business-dashboard .kpi-grid,
+  .business-dashboard .secondary-kpis,
+  .business-dashboard .customer-cards { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px; }
+  .business-dashboard .kpi-card.cds--tile { padding: 10px; }
+  .business-dashboard .kpi-icon { width: 28px; height: 28px; }
+  .business-dashboard .kpi-value { font-size: 20px; }
+  .business-dashboard .data-panel.cds--tile { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .business-dashboard * { transition: none !important; animation: none !important; }
+}

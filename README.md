@@ -64,3 +64,11 @@ No Cloudflare deployment configuration or deployment workflow is included. Selec
 ## Current scope
 
 This repository contains the application scaffold, Carbon design-system integration, and CI checks. It does not create or modify database objects, change existing database function permissions, configure production secrets, or deploy the application.
+
+
+## Frontend preview
+
+- Cloudflare Pages preview project: `kosmos-cortex-dashboard-preview`
+- Intended branch: `feat/business-data-hub-dashboard`
+- Build output: Next.js static export (`out/`); production-branch deployments are disabled for this preview project.
+- All dashboard controls must use the approved Carbon React gateway at `src/design-system`; the design-system check also rejects custom interactive SVG/HTML elements.

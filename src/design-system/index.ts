@@ -57,3 +57,6 @@ export {
 } from "@carbon/react/icons";
 
 export { PageHeader } from "@carbon/ibm-products";
+
+/** Official Carbon Charts React visualizations. */
+export { LineChart, SimpleBarChart, BubbleChart, DonutChart } from "@carbon/charts-react";

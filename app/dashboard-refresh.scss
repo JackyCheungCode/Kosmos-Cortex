@@ -374,3 +374,15 @@
 @media (prefers-reduced-motion: reduce) {
   .app-shell .app-side-nav.cds--side-nav { transition: none; }
 }
+
+.customer-card-title-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--cds-link-primary);
+  background: var(--cds-layer-02);
+}
+.customer-card-heading .table-link { flex: 1 1 auto; }

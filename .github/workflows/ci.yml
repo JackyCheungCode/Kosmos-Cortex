@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Lint, typecheck, and build
+    name: Design system, lint, typecheck, and build
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -27,10 +27,12 @@ jobs:
         with:
           node-version: 22
 
-      # A lockfile will be added after dependency versions are validated.
-      # Do not enable setup-node's npm cache until package-lock.json exists.
+      # npm install is used until a reviewed package-lock.json is generated.
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
+
+      - name: Check Carbon design-system policy
+        run: npm run check:design-system
 
       - name: Lint
         run: npm run lint

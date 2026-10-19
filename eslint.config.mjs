@@ -12,6 +12,32 @@ const eslintConfig = [
   {
     ignores: [".next/**", "out/**", "build/**", "next-env.d.ts"],
   },
+  {
+    files: ["app/**/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "@carbon/react",
+              message: "Import Carbon components through @/src/design-system.",
+            },
+            {
+              name: "@carbon/ibm-products",
+              message: "Import IBM Products components through @/src/design-system.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["src/design-system/index.ts"],
+    rules: {
+      "no-restricted-imports": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

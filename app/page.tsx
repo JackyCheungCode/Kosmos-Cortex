@@ -1,39 +1,35 @@
+"use client";
+
+import { Button, Column, Grid, PageHeader, Tag, Theme, Tile } from "@/src/design-system";
+
 export default function HomePage() {
   return (
-    <main className="page-shell">
-      <section className="hero" aria-labelledby="page-title">
-        <p className="eyebrow">PROJECT WORKSPACE</p>
-        <h1 id="page-title">Kosmos Cortex</h1>
-        <p className="intro">
-          Your application foundation is ready to evolve. Connect the backend,
-          define the product workflow, and build from a secure, versioned base.
-        </p>
-        <div className="status-list" aria-label="Initial project status">
-          <div className="status-item">
-            <span className="status-dot" aria-hidden="true" />
-            <span>Next.js and TypeScript scaffold</span>
-            <span className="status-label">Prepared</span>
-          </div>
-          <div className="status-item">
-            <span className="status-dot" aria-hidden="true" />
-            <span>Supabase environment template</span>
-            <span className="status-label">Prepared</span>
-          </div>
-          <div className="status-item">
-            <span className="status-dot pending" aria-hidden="true" />
-            <span>Live backend connection</span>
-            <span className="status-label">Not configured</span>
-          </div>
-          <div className="status-item">
-            <span className="status-dot pending" aria-hidden="true" />
-            <span>Deployment target</span>
-            <span className="status-label">Not selected</span>
-          </div>
-        </div>
-        <p className="note">
-          This starter page does not query or modify the production database.
-        </p>
-      </section>
-    </main>
+    <Theme theme="white">
+      <main className="cds--content">
+        <PageHeader
+          title="Kosmos Cortex"
+          subtitle="A secure, versioned workspace built on IBM Carbon."
+        />
+        <Grid fullWidth>
+          <Column sm={4} md={8} lg={16}>
+            <Tile>
+              <Tag type="green">Design system connected</Tag>
+              <h2>IBM Carbon foundation</h2>
+              <p>
+                This workspace uses official Carbon components and IBM Products
+                patterns. New interface work must follow the repository design
+                system baseline and its reviewed exception process.
+              </p>
+              <Button
+                href="https://carbondesignsystem.com/"
+                kind="tertiary"
+              >
+                Read Carbon documentation
+              </Button>
+            </Tile>
+          </Column>
+        </Grid>
+      </main>
+    </Theme>
   );
 }

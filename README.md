@@ -1,21 +1,23 @@
 # Kosmos Cortex
 
-Kosmos Cortex is the starting point for a web application built with Next.js, TypeScript, and Supabase.
+Kosmos Cortex is a web application built with Next.js, TypeScript, Supabase, and the IBM Carbon Design System.
 
 ## Stack
 
 - Next.js App Router and React
 - TypeScript
+- IBM Carbon Design System v11 via `@carbon/react`
+- IBM enterprise UI patterns via `@carbon/ibm-products`
 - Supabase for database and authentication integration
 - GitHub Actions for continuous integration
 
-Cloudflare deployment is intentionally not configured in this initial commit. Choose and validate the deployment target before adding platform-specific configuration.
+Cloudflare deployment is intentionally not configured. Choose and validate the deployment target before adding platform-specific configuration.
 
-## Requirements
+## Design system baseline
 
-- Node.js 22 or a currently supported Node.js LTS release
-- npm
-- A Supabase project for live backend integration (optional for the initial local UI)
+The UI baseline uses exact direct dependency versions for Carbon core, IBM Products, and Sass. Application components should be imported through `src/design-system/index.ts`. Unreviewed custom controls, inline styles, hard-coded design values, and direct Carbon package imports outside the approved gateway are prohibited by default.
+
+See [the Carbon baseline](docs/design-system/carbon-baseline.md) and [the exception register](docs/design-system/exceptions.json) for policy and review requirements.
 
 ## Getting started
 
@@ -40,6 +42,7 @@ Cloudflare deployment is intentionally not configured in this initial commit. Ch
 - `npm run dev` — start the local development server
 - `npm run lint` — run ESLint
 - `npm run typecheck` — check TypeScript types
+- `npm run check:design-system` — enforce Carbon usage and styling rules
 - `npm run build` — build the production application
 
 ## Environment variables
@@ -48,12 +51,12 @@ See `.env.example`. Never commit `.env.local`, access tokens, database passwords
 
 ## Database changes
 
-Database migrations are not included in this initial scaffold. Add reviewed, version-controlled migrations only after the existing database functions, permissions, and RLS posture have been assessed.
+Database migrations are not included in this scaffold. Add reviewed, version-controlled migrations only after the existing database functions, permissions, and RLS posture have been assessed.
 
 ## Deployment
 
-No Cloudflare deployment configuration or deployment workflow is included yet. Select and validate a compatible deployment target before publishing.
+No Cloudflare deployment configuration or deployment workflow is included. Select and validate a compatible deployment target before publishing.
 
 ## Current scope
 
-This repository currently contains the application scaffold and CI checks only. It does not create or modify database objects, change existing database function permissions, configure production secrets, or deploy the application.
+This repository contains the application scaffold, Carbon design-system integration, and CI checks. It does not create or modify database objects, change existing database function permissions, configure production secrets, or deploy the application.

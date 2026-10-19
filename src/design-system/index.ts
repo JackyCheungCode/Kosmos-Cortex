@@ -48,6 +48,6 @@ export {
   ShoppingCart,
   UserAvatar,
   UserMultiple,
-} from "@carbon/icons-react";
+} from "@carbon/react/icons";
 
 export { PageHeader } from "@carbon/ibm-products";

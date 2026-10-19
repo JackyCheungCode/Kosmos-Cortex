@@ -31,7 +31,7 @@ function KpiRow({items}:{items:{value:string;label:string;comparison:string;good
 function SimpleList({title,items}:{title:string;items:{label:string;value:number;display:string}[]}){return <Panel title={title}><Bars items={items}/></Panel>}
 export default function HomePage(){
  const [tab,setTab]=useState(0),[region,setRegion]=useState(regions[0]),[owner,setOwner]=useState(owners[0]),[currency,setCurrency]=useState(currencies[0]),[product,setProduct]=useState(products[0]),[dates,setDates]=useState<Date[]>([]),[drill,setDrill]=useState("");
- const [sidebarOpen,setSidebarOpen]=useState(true),[activeMenu,setActiveMenu]=useState("管理层总览"),[activeSubMenu,setActiveSubMenu]=useState(""),[expandedNav,setExpandedNav]=useState(""),[searchOpen,setSearchOpen]=useState(false),[notificationsOpen,setNotificationsOpen]=useState(false),[profileOpen,setProfileOpen]=useState(false);
+ const [sidebarOpen,setSidebarOpen]=useState(true),[mobileNavOpen,setMobileNavOpen]=useState(false),[activeMenu,setActiveMenu]=useState("管理层总览"),[activeSubMenu,setActiveSubMenu]=useState(""),[expandedNav,setExpandedNav]=useState(""),[searchOpen,setSearchOpen]=useState(false),[notificationsOpen,setNotificationsOpen]=useState(false),[profileOpen,setProfileOpen]=useState(false);
 
  const [applied,setApplied]=useState({region:"all",owner:"all",currency:"USD",product:"all",startDate:"",endDate:""});
  const monthPick=months.indexOf(drill)+1; const filtered=useMemo(()=>customers.filter(c=>(applied.region==="all"||c.region===applied.region)&&(applied.owner==="all"||c.owner===applied.owner)&&(applied.product==="all"||c.category===applied.product)&&(!applied.startDate||c.date>=applied.startDate)&&(!applied.endDate||c.date<=applied.endDate)&&(!drill||(stageFloor[drill]!==undefined?c.revenue>=stageFloor[drill]:months.includes(drill)?Number(c.date.slice(5,7))===monthPick:c.name===drill||c.region===drill||c.country===drill))),[applied,drill,monthPick]);
@@ -44,7 +44,7 @@ export default function HomePage(){
  return <div className={`app-shell ${sidebarOpen?"sidebar-expanded":"sidebar-collapsed"}`}>
  <Theme theme="g90"><div className="app-chrome">
  <Header aria-label="Kosmos Cortex" className="app-header">
- <HeaderMenuButton aria-label={sidebarOpen?"收起侧边栏":"展开侧边栏"} isActive={sidebarOpen} onClick={()=>setSidebarOpen(v=>!v)}/>
+ <HeaderMenuButton aria-label={sidebarOpen?"收起侧边栏":"展开侧边栏"} isActive={sidebarOpen} onClick={()=>{setSidebarOpen(v=>!v);setMobileNavOpen(v=>!v)}}/>
  <HeaderName prefix="Kosmos" href="/" className="app-header-name"><strong>Cortex</strong></HeaderName>
  <HeaderGlobalBar>
  {searchOpen&&<div className="header-search"><Search id="global-search" size="sm" labelText="全局搜索" placeholder="搜索客户、订单或商机"/></div>}
@@ -55,7 +55,7 @@ export default function HomePage(){
  </Header>
  {notificationsOpen&&<div className="header-popover notifications-popover"><div className="popover-title">通知中心</div><p>目前没有新的通知。</p><span>演示环境 · 通知数据未接入</span></div>}
  {profileOpen&&<div className="header-popover profile-popover"><div className="profile-name">Kosmos Admin</div><span>系统管理员 · 演示账号</span><CarbonButton kind="ghost" size="sm" onClick={()=>setProfileOpen(false)}>关闭菜单</CarbonButton></div>}
- <SideNav aria-label="主导航" expanded={sidebarOpen} isFixedNav className={`app-side-nav ${sidebarOpen?"is-open":""}`}>
+ <SideNav aria-label="主导航" expanded={sidebarOpen} isFixedNav className={`app-side-nav ${sidebarOpen?"is-open":""} ${mobileNavOpen?"mobile-nav-open":""}`}>
  <SideNavItems>
  {navItems.map(item=>{const Icon=item.icon;return item.children.length===0?<SideNavLink key={item.label} href="#" renderIcon={Icon} isActive={activeMenu===item.label} onClick={e=>{e.preventDefault();setActiveMenu(item.label);setActiveSubMenu("");setExpandedNav("")}}>{item.label}</SideNavLink>:<SideNavMenu key={item.label} title={item.label} renderIcon={Icon} isActive={activeMenu===item.label} expanded={expandedNav===item.label} onClick={()=>{setActiveMenu(item.label);setActiveSubMenu("");setExpandedNav(v=>v===item.label?"":item.label)}}>{item.children.map(child=><SideNavMenuItem key={child} href="#" isActive={activeSubMenu===child} onClick={e=>{e.preventDefault();setActiveMenu(item.label);setActiveSubMenu(child);setExpandedNav(item.label)}}>{child}</SideNavMenuItem>)}</SideNavMenu>})}
  </SideNavItems>
